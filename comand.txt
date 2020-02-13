@@ -1,0 +1,9 @@
+npm -v
+node -v
+vue -v
+vue create vue-cli
+npx @vue/cli create vue-cli
+ npm run serve
+npm install sass-loader node-sass --save-dev
+npm uninstall marker --save-dev
+npm audit fix
