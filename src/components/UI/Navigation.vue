@@ -4,7 +4,7 @@
       <li><a href="/home">Home</a></li>
       <li><a href="/modals">Modals</a></li>
       <li><a href="/auth">Auth</a></li>
-    
+			<slot name="nav"></slot>
       <!-- <li v-if="!signedIn"><a href="/login">Login</a></li>
       <li v-if="signedIn"><a href="/profile">Profile</a></li>
       <li v-if="signedIn"><a href="/logout" data-no-prefetch>Logout</a></li> -->

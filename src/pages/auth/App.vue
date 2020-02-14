@@ -1,11 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="wrapper-content">
-      <navigation />
+      <navigation >
+				<div class="auth" slot="nav">
+					<a>Sign in</a> <a>Sign up</a>
+				</div>
+      </navigation >
       <section>
         <div class="container">
           <div id="app">
-            <h1>Auth</h1>
+            <auth/>
           </div>
         </div>
       </section>
@@ -15,11 +19,14 @@
 
 <script>
 import navigation from "@/components/UI/Navigation.vue"
+import auth from "@/components/Auth.vue"
+import login from "@/components/Login.vue"
+
 export default {
-	name: "Auth",
-		components:{
-		navigation
+	components:{
+		auth,login,navigation
 	},
+	
 	data(){
 		return{
 			
@@ -30,11 +37,21 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+}
+
+.auth{
+	margin-left: auto;
+	margin-right: 50px;
+	a{
+		font-size: 14px;
+		color: blue;
+		border-bottom: 1px dashed blue;
+		
+		cursor:pointer;
+	}
+	a:not(:last-child){
+		margin-right: 20px;
+	}
 }
 </style>
