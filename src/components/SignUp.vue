@@ -1,18 +1,7 @@
 <template>
-  <modal @close="$emit('close', resetForm())" title="Modal width form + validate + password">
+  <modal @close="$emit('close', resetForm())" title="Sign up">
     <div slot="body">
       <form @submit.prevent="submit">
-        <!-- Name -->
-        <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
-          <label class="form__label">Name</label>
-          <p class="error" v-if="$v.name.$dirty && !$v.name.required">Name is required</p>
-          <p
-            class="error"
-            v-if="!$v.name.minLength"
-          >Name must have at least {{$v.name.$params.minLength.min}} letters.</p>
-          <input class="form__input" v-model.trim.lazy="name" />
-        </div>
-
         <!-- Email -->
         <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
           <label class="form__label">Email</label>
@@ -38,14 +27,15 @@
           <input class="form__input" v-model.trim="$v.repeatPassword.$model" />
         </div>
 
-        <button class="btn btnPrimary" type="submit" :disabled="submitStatus === 'PENDING'">Submit!</button>
-        <p class="typo__p" v-if="submitStatus === 'OK'">Thanks for your submission!</p>
+        <button class="btn btnPrimary" type="submit" :disabled="submitStatus === 'PENDING'">Sign up</button>
+        <p class="typo__p" v-if="submitStatus === 'OK'">Thanks for your registration!</p>
         <p
           class="typo__p typo__p--error"
           v-if="submitStatus === 'ERROR'"
         >Please fill the form correctly.</p>
         <p class="typo__p" v-if="submitStatus === 'PENDING'">Sending...</p>
       </form>
+      <a @click="$emit('auth')">Do you want to Sign in</a>
     </div>
   </modal>
 </template>
@@ -59,7 +49,6 @@ export default {
   },
   data() {
     return {
-      name: "",
       email: "",
       password: "",
       repeatPassword: "",
@@ -67,10 +56,6 @@ export default {
     };
   },
   validations: {
-    name: {
-      required,
-      minLength: minLength(4)
-    },
     email: {
       required,
       email
@@ -86,7 +71,6 @@ export default {
   methods: {
     submit() {
       console.log({
-        name: this.name,
         email: this.email,
         password: this.password
       });
@@ -106,7 +90,6 @@ export default {
       console.log(this.submitStatus);
     },
     resetForm() {
-      this.name = "";
       this.email = "";
       this.password = "";
       this.repeatPassword = "";
