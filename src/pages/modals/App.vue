@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="wrapper-content">
+			<navigation/>
       <section>
         <div class="container">
           <div id="app">
@@ -62,11 +63,12 @@
 
 <script>
 import modals from "@/components/UI/Modal.vue"
+import navigation from "@/components/UI/Navigation.vue"
 import modalValidate from "@/components/ModalValidate.vue"
 import modalValidatePassword from "@/components/ModalValidatePassword.vue"
 export default {
 	components:{
-		modals,modalValidate,modalValidatePassword
+		modals,modalValidate,modalValidatePassword,navigation
 	},
 	data(){
 		return {
